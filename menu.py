@@ -1,6 +1,6 @@
 import src.menu.display_options as do
-import os
-os.system('cls')
+from src.menu.clear import clear
+clear()
 
 
 print('¡Bienvenido a OptiMacro!')

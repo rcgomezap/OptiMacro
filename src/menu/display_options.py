@@ -1,5 +1,5 @@
 import src.menu.funcs as funcs
-import os
+from src.menu.clear import clear
 
 
 def display_options(display):
@@ -19,7 +19,7 @@ def option_func(salir,display):
         print('¡Hasta luego!')
         salir = True
     elif option == '0':
-        os.system('cls')
+        clear()
         display = True
     else:
         print('Opcion no valida')
