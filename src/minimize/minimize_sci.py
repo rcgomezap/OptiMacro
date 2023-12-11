@@ -2,6 +2,7 @@ import numpy as np
 from scipy.optimize import minimize
 import src.minimize.restrictions as rst
 from src.menu.clear import line
+from tqdm import tqdm
 
 def minimize_sci(alimentos,cal,prot,carb):
     def cost_function(x):
@@ -31,7 +32,10 @@ def minimize_sci(alimentos,cal,prot,carb):
 
     # Loop variando vectores iniciales
     bounds = (0,400)
-    for i in range(50):
+    n = 50
+    barra = tqdm(total=n, desc="Procesando")
+    barra.update(1)
+    for i in range(n):
         x0 = np.random.randint(bounds[0],bounds[1],len(alimentos))
         res = minimize(cost_function, x0, method='CG', tol=1e-8, options={'maxiter': 1000})
         if i == 0:
@@ -39,7 +43,7 @@ def minimize_sci(alimentos,cal,prot,carb):
         else:
             if res.fun < res_min.fun:
                 res_min = res
-        print('Porcentaje: ',i/50*100,'%')
+        barra.update(1)
 
     display_result(alimentos,res_min)
 
