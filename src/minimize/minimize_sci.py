@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.optimize import minimize
 import src.minimize.restrictions as rst
+from src.menu.clear import line
 
 def minimize_sci(alimentos,cal,prot,carb):
     def cost_function(x):
@@ -38,25 +39,33 @@ def minimize_sci(alimentos,cal,prot,carb):
         else:
             if res.fun < res_min.fun:
                 res_min = res
-        print('Iteracion:',i+1,'Error:',res.fun)
+        print('Porcentaje: ',i/50*100,'%')
 
+    display_result(alimentos,res_min)
+
+    return res_min.x
+
+def display_result(alimentos,res):
 
     print('\n\n')
+    line()
 
     sum_cal = 0
     sum_prot = 0
     sum_carb = 0
 
     for i in range(len(alimentos)):
-        print(alimentos[i].nombre, res_min.x[i], 'gramos')
-        sum_cal += res_min.x[i]*(alimentos[i].proteina*4 + alimentos[i].carbohidratos*4 + alimentos[i].grasas*9)
-        sum_prot += res_min.x[i]*alimentos[i].proteina
-        sum_carb += res_min.x[i]*alimentos[i].carbohidratos
+        if str(alimentos[i].int) != 'nan':
+            print(alimentos[i].nombre, (res.x[i]/alimentos[i].low).round(1), 'unidades')
+        else:
+            print(alimentos[i].nombre, res.x[i].round(1), 'gramos')
+           
+        sum_cal += res.x[i]*(alimentos[i].proteina*4 + alimentos[i].carbohidratos*4 + alimentos[i].grasas*9)
+        sum_prot += res.x[i]*alimentos[i].proteina
+        sum_carb += res.x[i]*alimentos[i].carbohidratos
     
-    print(f'kcals: {sum_cal} Prot: {sum_prot} Carb: {sum_carb}')
-    print('Error:', res_min.fun)
-    # print(res_min.message)
-    print('Numero de iteraciones:', res_min.nit)
-
-    return res_min.x
-
+    line()
+    print(f'Energia: : {sum_cal:.2f} kcal -  Prot: {sum_prot:.2f} g -  Carb: {(sum_carb*4/sum_cal*100):.2f} %')
+    line()
+    line()
+    print('Residual:', res.fun)
