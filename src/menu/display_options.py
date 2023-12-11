@@ -9,6 +9,8 @@ def display_options(display):
             2) Salir
             ''')
     display = False
+
+    
 def option_func(salir,display):
     line()
     option = input('Ingrese una opción: ')
