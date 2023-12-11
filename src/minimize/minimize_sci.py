@@ -31,10 +31,9 @@ def minimize_sci(alimentos,cal,prot,carb):
 
 
     # Loop variando vectores iniciales
-    bounds = (0,400)
+    bounds = (0,500)
     n = 50
     barra = tqdm(total=n, desc="Procesando")
-    barra.update(1)
     for i in range(n):
         x0 = np.random.randint(bounds[0],bounds[1],len(alimentos))
         res = minimize(cost_function, x0, method='CG', tol=1e-8, options={'maxiter': 1000})
@@ -44,6 +43,7 @@ def minimize_sci(alimentos,cal,prot,carb):
             if res.fun < res_min.fun:
                 res_min = res
         barra.update(1)
+    barra.close()
 
     display_result(alimentos,res_min)
 
