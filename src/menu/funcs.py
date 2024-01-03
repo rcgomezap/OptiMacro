@@ -6,6 +6,20 @@ import src.minimize.minimize_sci as msc
 from crear_comida import get_comida
 from crear_comida import crear_comida
 
+from src.menu.clear import line
+
+def get_id():
+        df_alimentos = pd.read_csv('database/alimentos.csv')
+        alimento = input('Escriba el nombre de un alimento ')
+        df = df_alimentos[df_alimentos.nombre.str.contains(alimento, case=False)]
+        print(f'Estos son los alimentos que contienen "{alimento}":')
+        for i in range(len(df)):
+            print(f'{i+1}) {df.iloc[i,0]}')
+        option = int(input('Seleccione un alimento: ')) - 1
+        index = df.index[option]
+        print(f'Ha seleccionado "{df.iloc[option,0]}" con id: {index}')
+        return index
+
 def optimizar_alimento():
     files = os.listdir('./database/comidas')
     dict_comidas = {}
@@ -40,17 +54,6 @@ def anadir_tabla_nutricional():
     print('Alimento creado con exito')
 
 def anadir_comida():
-    def get_id():
-        df_alimentos = pd.read_csv('database/alimentos.csv')
-        alimento = input('Escriba el nombre de un alimento ')
-        df = df_alimentos[df_alimentos.nombre.str.contains(alimento, case=False)]
-        print(f'Estos son los alimentos que contienen "{alimento}":')
-        for i in range(len(df)):
-            print(f'{i+1}) {df.iloc[i,0]}')
-        option = int(input('Seleccione un alimento: ')) - 1
-        index = df.index[option]
-        print(f'Ha seleccionado "{df.iloc[option,0]}" con id: {index}')
-        return index
     
     add = True
     id = []
@@ -72,3 +75,15 @@ def anadir_comida():
     print(int_restriccion)
     crear_comida(nombre,id,low,high,int_restriccion)
     print('Comida creada con exito.')
+
+def ver_tabla_nutricional():
+    df_alimentos = pd.read_csv('database/alimentos.csv')
+    alimento = get_id()
+    line()
+    print('TABLA NUTRICIONAL\n Información por cada 100 gramos')
+    line()
+    print(f'Nombre: {df_alimentos.iloc[alimento,0]}')
+    print(f'Proteinas: {df_alimentos.iloc[alimento,1]*100} gramos')
+    print(f'Carbohidratos: {df_alimentos.iloc[alimento,2]*100} gramos')
+    print(f'Grasas: {df_alimentos.iloc[alimento,3]*100} gramos')
+    line()

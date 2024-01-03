@@ -8,7 +8,8 @@ def display_options(display):
             1) Optimizar una comida existente
             2) Añadir tabla nutricional de un alimento
             3) Añadir una comida
-            4) Salir
+            4) Ver tabla nutricional de un alimento
+            5) Salir
             ''')
     display = False
 
@@ -26,6 +27,9 @@ def option_func(salir,display):
         line()
         funcs.anadir_comida()
     elif option == '4':
+        line()
+        funcs.ver_tabla_nutricional()
+    elif option == '5':
         print('¡Hasta luego!')
         salir = True
     elif option == '0':
