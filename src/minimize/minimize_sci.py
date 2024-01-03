@@ -68,7 +68,7 @@ def display_result(alimentos,res):
         sum_cal += res.x[i]*(alimentos[i].proteina*4 + alimentos[i].carbohidratos*4 + alimentos[i].grasas*9)
         sum_prot += res.x[i]*alimentos[i].proteina
         sum_carb += res.x[i]*alimentos[i].carbohidratos
-        sum_grasas = res.x[i]*alimentos[i].grasas
+        sum_grasas += res.x[i]*alimentos[i].grasas
     
     line()
     print(f'Energia: : {sum_cal:.2f} kcal -  Prot: {sum_prot:.2f} g -  Carb: {(sum_carb*4/sum_cal*100):.2f} %, Grasas: {sum_grasas:.2f} g')
