@@ -8,7 +8,7 @@ def crear_comida(nombre,id,low,high,int):
         al = crear_alimento(id[i])
         al.low = low[i]
         al.high = high[i]
-        al.int = int[i]
+        al.int = bool(int[i])
         nom_alimentos.append(al.nombre)
         comida.append(al)
     df = pd.DataFrame({'nombre':nom_alimentos,'id':id,'low':low,'high':high,'int':int})

@@ -64,7 +64,7 @@ def anadir_comida():
         id.append(get_id())
         low.append(input('Ingrese la cantidad minima del alimento: '))
         high.append(input('Ingrese la cantidad maxima del alimento: '))
-        int_restriccion.append(input('Ingrese la cantidad del alimento: '))
+        int_restriccion.append(input('Ingrese si el alimento es porcionado (vacio si no): '))
         add = input('Desea añadir otro alimento? (y/n) ') == 'y'
     
     print(id)
