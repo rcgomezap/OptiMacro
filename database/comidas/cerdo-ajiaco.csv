@@ -2,4 +2,4 @@ nombre,id,low,high,int
 "Cerdo, lomo, crudo",3440,,,False
 "Arroz, pulido, crudo, seco",87,60,,False
 "Plátano, banano",2495,100,,True
-"Caldo, ajiaco",5722,300,301,False
+"Caldo, ajiaco",5722,80,81,False
