@@ -59,7 +59,7 @@ def display_result(alimentos,res):
     sum_carb = 0
 
     for i in range(len(alimentos)):
-        if str(alimentos[i].int) == True:
+        if alimentos[i].int == True:
             print(alimentos[i].nombre, (res.x[i]/alimentos[i].low).round(1), 'unidades')
         else:
             print(alimentos[i].nombre, res.x[i].round(1), 'gramos')
