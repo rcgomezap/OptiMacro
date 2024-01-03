@@ -1,0 +1,3 @@
+nombre,id,low,high,int
+"Huevo, de gallina",4710,50,,True
+"Arepa, maíz blanco, plana delgada",32,,,False
