@@ -1,0 +1,5 @@
+nombre,id,low,high,int
+"Arroz, pulido, crudo, seco",87,,,False
+"Huevo, de gallina",4710,50,,True
+"Res, carne, molida, especial",3801,,,False
+Banano,2006,100,,True
