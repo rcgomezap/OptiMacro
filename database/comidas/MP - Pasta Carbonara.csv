@@ -1,6 +1,6 @@
 nombre,id,low,high,int
 "Pollo, pechuga, sin piel, cruda",3746,50,,False
-Alpina Queso Parmesano,6199,10,,False
+Alpina Queso Parmesano,6199,10,30,False
 Colanta Leche Semidescremada Deslactosada,6201,80,110,False
 Colanta Queso Tipo Mozzarella Cubitos,6202,5,15,False
 Pastas Doria,6195,40,,False
