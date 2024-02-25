@@ -1,0 +1,4 @@
+nombre,id,low,high,int
+"Arroz, pulido, crudo, seco",87,40,200,False
+"Pollo, pechuga, sin piel, cruda",3746,115,120,False
+"Aceite, de oliva",2649,1,30,False
